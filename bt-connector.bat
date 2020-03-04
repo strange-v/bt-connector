@@ -16,6 +16,16 @@ goto showhelp
 	if not "%~2" == "" set address=%~2
 	echo Connecting...
 	"C:\Program Files (x86)\Bluetooth Command Line Tools\bin\btcom" -b %address% -c -s111e
+	if errorlevel 1 goto reconnect
+	"C:\Program Files (x86)\Bluetooth Command Line Tools\bin\btcom" -b %address% -c -s110b
+	echo Done
+	goto exit
+:reconnect
+	if not "%~2" == "" set address=%~2
+	echo Reconnecting...
+	"C:\Program Files (x86)\Bluetooth Command Line Tools\bin\btcom" -b %address% -r -s111e
+	"C:\Program Files (x86)\Bluetooth Command Line Tools\bin\btcom" -b %address% -r -s110b
+	"C:\Program Files (x86)\Bluetooth Command Line Tools\bin\btcom" -b %address% -c -s111e
 	"C:\Program Files (x86)\Bluetooth Command Line Tools\bin\btcom" -b %address% -c -s110b
 	echo Done
 	goto exit
