@@ -11,7 +11,7 @@ Script to easy connect/disconnect bluetooth headphones
   
 * To disconnect from the bluetooth device
 
-  `bt-connector connect [device address]`
+  `bt-connector disconnect [device address]`
 
   If device address is not specified default one will be used
 
